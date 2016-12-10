@@ -16,7 +16,7 @@
 
 "use strict";
 
-var Library = React.createClass({
+const Library = React.createClass({
     displayName: "Library",
 
     getInitialState: function () {
@@ -26,7 +26,7 @@ var Library = React.createClass({
     },
 
     componentWillMount: function () {
-        var nextProps = this.props;
+        let nextProps = this.props;
         this.handleLoadBooksFromServer();
     },
 
@@ -37,7 +37,7 @@ var Library = React.createClass({
     handleLoadBooksFromServer: function () {
         ajaxGetJson("/api/texts",
             {},
-            function(res) {
+            function (res) {
                 console.log("LOADED");
                 this.setState({data: res})
             }.bind(this)
@@ -49,20 +49,19 @@ var Library = React.createClass({
             React.createElement(Sidebar, this.props.navigation),
             // if
             (this.state.data == null)
-            ? // then
-            React.DOM.div(null,
-                React.DOM.h1(null, "Library"),
-                React.DOM.br(),
-                React.DOM.h4(null, "loading..."))
-            : // else
-            React.createElement(FetchedLibrary, {books: this.state.data})
+                ? // then
+                React.DOM.div(null,
+                    React.DOM.h1(null, "Library"),
+                    React.DOM.br(),
+                    React.DOM.h4(null, "loading..."))
+                : // else
+                React.createElement(FetchedLibrary, {books: this.state.data})
         )
     }
 
 });
 
-
-var FetchedLibrary = React.createClass({
+const FetchedLibrary = React.createClass({
     displayName: "FetchedLibrary",
 
     render: function () {
@@ -71,9 +70,9 @@ var FetchedLibrary = React.createClass({
             React.DOM.h1(null, "Library2"),
             React.DOM.ul(null,
                 Immutable.fromJS(this.props.books).map(function (book, i) {
-                        return React.DOM.li(null,
-                            React.DOM.a({href: "?#library/" + book.get("url")}, book.get("url"))
-                        )
+                    return React.DOM.li({key: i},
+                        React.DOM.a({href: "?#library/" + book.get("url")}, book.get("url"))
+                    )
                 })
             )
         )

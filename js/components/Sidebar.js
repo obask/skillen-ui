@@ -17,7 +17,7 @@
 "use strict";
 
 
-var Sidebar = React.createClass({
+const Sidebar = React.createClass({
     displayName: "Sidebar",
 
     FIELDS: Immutable.fromJS({
@@ -29,13 +29,13 @@ var Sidebar = React.createClass({
     }),
 
     render: function () {
-        var selected = this.props.hash;
+        let selected = this.props.hash;
         console.log(selected);
-        return React.DOM.div({style: {"background-color": "beige"}},
+        return React.DOM.div({style: {"backgroundColor": "beige"}},
             React.DOM.h4(null, "SIDEBAR:"),
             React.DOM.ul(null,
                 this.FIELDS.map(function (label, k) {
-                    var cl = (this.props.hash == k) ? "red" : "black";
+                    let cl = (this.props.hash == k) ? "red" : "black";
                     return React.DOM.li({key: k},
                         React.DOM.a({href: k, style: {color: cl}}, label)
                     )

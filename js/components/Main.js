@@ -20,6 +20,7 @@ var MainFetch = React.createClass({
     displayName: "MainFetch",
 
     getInitialState: function () {
+        console.log("getInitialState");
         return {
             data: SlotsStore.getAll()
         };
@@ -40,6 +41,7 @@ var MainFetch = React.createClass({
     },
 
     componentWillMount: function () {
+        console.log("componentWillMount");
         var nextProps = this.props;
         AppDispatcher.handleLoadText({
             url: nextProps.url,
@@ -49,6 +51,7 @@ var MainFetch = React.createClass({
     },
 
     componentWillReceiveProps: function (nextProps) {
+        console.log("componentWillReceiveProps");
         AppDispatcher.handleLoadText({
             url: nextProps.url,
             zoom: nextProps.request.zoom,

@@ -20,18 +20,18 @@
 // http://magic.reactjs.net/htmltojsx.htm
 // https://babeljs.io/repl/
 
-var defaultController = function () {
+const defaultController = function () {
     if (window.location.hash === "" || window.location.hash === "#ui") {
         ReactDOM.render(React.createElement(MainFetch, {request: {}}), document.getElementById('content'));
     } else if (startsWith("#ui?", window.location.hash)) {
-        var params = parseParams(window.location.hash.substring("#ui?".length).split("&"));
-        var request = {groups: params.groups, zoom: params.zoom, time: params.time};
+        const params = parseParams(window.location.hash.substring("#ui?".length).split("&"));
+        const request = {groups: params.groups, zoom: params.zoom, time: params.time};
         ReactDOM.render(React.createElement(CelosMainFetch, {
             url: "/main",
             request: request
         }), document.getElementById('content'))
     } else if (window.location.hash === "#add-text") {
-            ReactDOM.render(React.createElement(UploadBook, {navigation: {hash: window.location.hash}}), document.getElementById('content'))
+        ReactDOM.render(React.createElement(UploadBook, {navigation: {hash: window.location.hash}}), document.getElementById('content'))
     } else if (window.location.hash === "#about") {
         ReactDOM.render(React.createElement(AboutTab, {navigation: {hash: window.location.hash}}), document.getElementById('content'))
     } else if (startsWith("#library/", window.location.hash)) {
@@ -50,11 +50,11 @@ window.addEventListener('hashchange', function () {
 
 
 
-var STARTUP_DATA = {
+const STARTUP_DATA = {
     workbench: {
         caption: "QWERTY",
         text: []
-        }
+    }
 };
 
 
